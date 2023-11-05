@@ -1,0 +1,20 @@
+# Uncomment the next line to define a global platform for your project
+# platform :ios, '9.0'
+
+target 'NaverLoginTest' do
+  # Comment the next line if you don't want to use dynamic frameworks
+  use_frameworks!
+  pod 'naveridlogin-sdk-ios'
+  pod 'Alamofire', '~> 5.1'
+  # Pods for NaverLoginTest
+
+  target 'NaverLoginTestTests' do
+    inherit! :search_paths
+    # Pods for testing
+  end
+
+  target 'NaverLoginTestUITests' do
+    # Pods for testing
+  end
+
+end
