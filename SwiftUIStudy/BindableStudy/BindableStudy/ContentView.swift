@@ -12,12 +12,20 @@ struct ContentView: View {
     
     var body: some View {
         VStack {
-            TextField("Search Query", text: $viewModel.query)
-                .textFieldStyle(.roundedBorder)
-                .padding()
+            SearchField(query: $viewModel.query)
             
             Text(viewModel.query)
         }
+    }
+}
+
+struct SearchField: View {
+    @Binding var query: String
+    
+    var body: some View {
+        TextField("Search Query", text: $query)
+            .textFieldStyle(.roundedBorder)
+            .padding()
     }
 }
 
