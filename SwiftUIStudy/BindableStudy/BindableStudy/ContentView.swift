@@ -25,7 +25,11 @@ struct SearchView: View {
     
     var body: some View {
         // $viewModel을 찾을 수가 없음 -> property Wrapper로 감싸져있지 않아서
-        SearchField(query: $viewModel.query)
+        SearchField(query: Binding(get: {
+            viewModel.query
+        }, set: { newValue in
+            viewModel.query = newValue
+        }))
     }
 }
 
