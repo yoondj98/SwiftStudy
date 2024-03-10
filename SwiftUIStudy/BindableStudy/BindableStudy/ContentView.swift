@@ -21,15 +21,12 @@ struct ContentView: View {
 }
 
 struct SearchView: View {
-    let viewModel: SearchViewModel
+    @Bindable var viewModel: SearchViewModel
     
     var body: some View {
         // $viewModel을 찾을 수가 없음 -> property Wrapper로 감싸져있지 않아서
-        SearchField(query: Binding(get: {
-            viewModel.query
-        }, set: { newValue in
-            viewModel.query = newValue
-        }))
+        // Binding으로 감싸서 get set 선언하는 대신 쉽게 @Bindable을 사용.
+        SearchField(query: $viewModel.query)
     }
 }
 
