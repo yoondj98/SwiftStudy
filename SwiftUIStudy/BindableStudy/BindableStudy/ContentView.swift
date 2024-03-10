@@ -8,7 +8,8 @@
 import SwiftUI
 
 struct ContentView: View {
-    @StateObject var viewModel = SearchViewModel()
+    // StateObject 대신 State를 사용
+    @State var viewModel = SearchViewModel()
     
     var body: some View {
         VStack {
@@ -29,8 +30,10 @@ struct SearchField: View {
     }
 }
 
-class SearchViewModel: ObservableObject {
-    @Published var query = ""
+// @Observable 매크로를 달아줌으로서 @Published를 달아주지 않아도 됨.
+@Observable
+class SearchViewModel {
+    var query = ""
 }
 
 #Preview {
