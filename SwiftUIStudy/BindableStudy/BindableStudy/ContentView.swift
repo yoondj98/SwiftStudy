@@ -13,10 +13,19 @@ struct ContentView: View {
     
     var body: some View {
         VStack {
-            SearchField(query: $viewModel.query)
+            SearchView(viewModel: viewModel)
             
             Text(viewModel.query)
         }
+    }
+}
+
+struct SearchView: View {
+    let viewModel: SearchViewModel
+    
+    var body: some View {
+        // $viewModel을 찾을 수가 없음 -> property Wrapper로 감싸져있지 않아서
+        SearchField(query: $viewModel.query)
     }
 }
 
