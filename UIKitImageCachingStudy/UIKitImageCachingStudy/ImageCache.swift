@@ -27,7 +27,7 @@ class ImageCache {
         // Memory Cache에 존재하는지 확인하고 있으면 이미지 반환
         if let cachedImage = self.memoryCache.loadImage(url: url) {
             let timeTaken = CFAbsoluteTimeGetCurrent() - startTime
-            print("Time taken from Memory Cache: \(String(format: "%.7f", timeTaken)) seconds")
+            print("Memory Cache에서 가져오는 시간: \(String(format: "%.7f", timeTaken)) seconds")
             completion(cachedImage)
             return
         }
@@ -39,7 +39,7 @@ class ImageCache {
             // 있으면 option에 따라 Memory Cache에 저장 후 이미지 반환
             if let cachedImage = self.diskCache.loadImage(url: url) {
                 let timeTaken = CFAbsoluteTimeGetCurrent() - diskStartTime
-                print("Time taken from Disk Cache: \(String(format: "%.7f", timeTaken)) seconds")
+                print("Disk Cache에서 가져오는 시간: \(String(format: "%.7f", timeTaken)) seconds")
                 self.memoryCache.saveImage(image: cachedImage,
                                            url: url,
                                            option: saveOption)
@@ -55,7 +55,7 @@ class ImageCache {
             if let imageData = try? Data(contentsOf: url),
                let image = UIImage(data: imageData) {
                 let timeTaken = CFAbsoluteTimeGetCurrent() - serverStartTime
-                print("Time taken from Server: \(String(format: "%.7f", timeTaken)) seconds")
+                print("서버에서 가져오는 시간: \(String(format: "%.7f", timeTaken)) seconds")
                 self.memoryCache.saveImage(image: image,
                                            url: url,
                                            option: saveOption)
